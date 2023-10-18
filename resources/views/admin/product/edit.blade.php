@@ -61,18 +61,25 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="category_id">Категорія</label>
-                                        <select name="category_id" class="custom-select rounded-0" id="category_id">
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category['id'] }}"
-                                                    @if ($category['id'] == $product['category_id']) selected @endif>
-                                                    {{ $category['title'] }}</option>
+                                        <label for="categories">Category</label>
+                                        <select name="categories[]" id="categories"  class="custom-select rounded-0" multiple required>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category['title'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Текст сторінки</label>
+                                        <label for="serial">Серійний номер</label>
+                                        <input type="text" name="serial" value="{{ $product['serial'] }}" class="form-control" id="serial"
+                                            placeholder="Введіть серійний номер">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Опис товару</label>
                                         <textarea id="content" name="content" class="form-control" rows="4">{{ $product['content'] }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Характеристики</label>
+                                        <textarea id="charact" name="charact" class="form-control" rows="4">{{ $product['charact'] }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Ціна</label>

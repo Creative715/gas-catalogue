@@ -17,25 +17,20 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'title' => 'Category01',
+                'title' => 'Газове обладнання',
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, omnis. Velit et facere soluta quidem, maiores iste sunt veritatis facilis esse? Eveniet molestias iusto eum aliquid ullam hic, sequi repellendus?',
                 'slug' => 'category01',
             ],
 
             [
-                'title' => 'Category02',
+                'title' => 'Теплові насоси',
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, omnis. Velit et facere soluta quidem, maiores iste sunt veritatis facilis esse? Eveniet molestias iusto eum aliquid ullam hic, sequi repellendus?',
                 'slug' => 'category02',
             ],
             [
-                'title' => 'Category03',
+                'title' => 'Аксесуари',
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, omnis. Velit et facere soluta quidem, maiores iste sunt veritatis facilis esse? Eveniet molestias iusto eum aliquid ullam hic, sequi repellendus?',
                 'slug' => 'category01',
-            ],
-            [
-                'title' => 'Category04',
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, omnis. Velit et facere soluta quidem, maiores iste sunt veritatis facilis esse? Eveniet molestias iusto eum aliquid ullam hic, sequi repellendus?',
-                'slug' => 'category04',
             ],
 
         ];

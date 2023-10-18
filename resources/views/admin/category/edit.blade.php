@@ -36,8 +36,6 @@
                             <div class="card-header">
                                 <h3 class="card-title">@yield('title') - {{ $category['title'] }}</h3>
                             </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
                             <form enctype="multipart/form-data" action="{{ route('category.update', $category['id']) }}" method="post">
                                 @csrf
                                 @method('PUT')
@@ -46,6 +44,17 @@
                                         <label for="title">Назва</label>
                                         <input type="text" name="title" value="{{ $category['title'] }}"
                                                class="form-control" placeholder="Введіть назву" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="parent_id">Батьківська категорія</label>
+                                        <select name="parent_id" class="custom-select rounded-0" id="parent_id">
+                                            <option value="">Без батьківської категорії</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category['id'] }}"
+                                                    @if ($category['id'] == $category['parent_id']) selected @endif>
+                                                    {{ $category['title'] }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Опис</label>
@@ -63,7 +72,7 @@
                                     <div class="form-group">
                                         <label for="slug">Slug</label>
                                         <input type="text" name="slug" class="form-control"
-                                               value="{{ $category['slug']}}" placeholder="url" required>
+                                               value="{{ $category['slug']}}">
                                     </div>
 
                                 </div>

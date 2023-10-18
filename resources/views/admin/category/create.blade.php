@@ -47,6 +47,15 @@
                                                placeholder="Введіть назву" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="parent_id">Батьківська категорія</label>
+                                        <select name="parent_id" class="custom-select rounded-0" id="parent_id">
+                                            <option value="">Без батьківської категорії</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="description">Опис</label>
                                         <input type="text" name="description" class="form-control" id="description"
                                                placeholder="Введіть опис" required>

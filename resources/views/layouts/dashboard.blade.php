@@ -169,6 +169,29 @@
                                                        </li> --}}
                         </ul>
                     </li>
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Сторінки
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('page.index') }}" class="nav-link">
+                                    <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                                    <p>Сторінки</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('page.create') }}" class="nav-link">
+                                    <i class="far fa-arrow-alt-circle-right nav-icon"></i>
+                                    <p>Додати сторінку</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

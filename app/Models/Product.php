@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Image;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
@@ -14,7 +15,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable =  ['title', 'seo_title', 'price', 'category_id', 'published', 'slug', 'description', 'img', 'content'];
+    protected $fillable =  ['title', 'seo_title', 'content', 'charact', 'price', 'serial', 'published', 'slug', 'description', 'img'];
 
     public function setSlugAttribute($slug)
     {
@@ -49,6 +50,11 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo('App\Models\Category', 'category_id');
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id');
     }
 
     public function images(): HasMany

@@ -47,15 +47,18 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
-    $product = Product::create($request->all());
 
+    $product = Product::create($request->all());
+    $product->categories()->attach($request->input('categories'));
     // Images
     if ($request->file('img')) {
       $path = Storage::putFile('public', $request->file('img'));
       $url = Storage::url($path);
       $product->img = $url;
     }
+
     $product->save();
+
     if ($request->hasFile("images")) {
       $files = $request->file("images");
       foreach ($files as $file) {
@@ -99,6 +102,7 @@ class ProductController extends Controller
   {
 
     $product->update($request->all());
+    $product->categories()->attach($request->input('categories'));
 
     // Images
     if ($request->file('img')) {

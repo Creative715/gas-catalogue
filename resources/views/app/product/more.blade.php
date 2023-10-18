@@ -1,117 +1,92 @@
 @extends('layouts.app', ['title' => $products->title, 'description' => $products->description])
 @section('content')
-    <div class="modal fade" id="ModalImg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="min-width: 800px !important;">
+    <!-- Modal -->
+    <div class="modal fade" id="productimgModal" tabindex="-1" aria-labelledby="productimgModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ $products->title }}</h5>
+                    <h5 class="modal-title" id="productimgModalLabel">{{ $products->title }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        &times;
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img  style="width: 800px; height:auto;" class="img-thumbnail" src="{{ $products->img ?? asset('images/no-image.jpg') }}"
-                        alt="{{ $products->title }}" />
-                </div>
-                <div class="modal-footer">
+                    <img class="img-thumbnail col-md-12 col-12" src="{{ $products->img ?? asset('images/no-image.jpg') }}"
+                        alt="{{ $products->title }}" title="{{ $products->title }}">
                 </div>
             </div>
         </div>
     </div>
-    <section class="inner-banner2 clearfix">
-        <div class="container clearfix">
-          <h2>{{ $products->title }}</h2>
-        </div>
-      </section>
-      <section class="breadcumb-wrapper">
-        <div class="container clearfix">
-          <ul class="breadcumb">
-            <li><a href="{{ route('main') }}"><i class="fa fa-home"></i> Головна</a></li>
-            <li><a href="{{ route('products') }}">Вся продукція</a></li>
-            <li><span>{{ $products->title }}</span></li>
-          </ul>
-        </div>
-      </section>
-      <section class="core-projects sectpad">
-        <div class="container clearfix">
-            <div class="product-details-content">
-                <div class="content-box">
-                        <li>
-                            <a data-toggle="modal" data-target="#ModalImg" href="#">
-                                <img style="width: 800px; height:auto;" class="img-thumbnail" src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="{{ $products->title }}" />
-                            </a>
-                        </li>
-                        <div class="pro-content clearfix">
-                            <h1>{{ $products->title }}</h1>
-                            <h4 class="price">Ціна: <span>{{ $products->price }} грн.</span></h4>
-                    <h5 class="price">Додано: <span>{{ $products->createdAtForHumans() }}</span></h5>
-                            <p>{!! $products->content !!}</p>
-                          </div>
-                        <h2></h2>
-                        <p></p>
-                        </li>
+    <div class="page">
+        <section class="section novi-background breadcrumbs-custom bg-image context-dark"
+            style="background-image: url({{ asset('images/bg.jpg') }}">
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main">
+                        <h6 class="breadcrumbs-custom-subtitle title-decorated">Immertrade</h6>
+                        <h2 class="text-uppercase breadcrumbs-custom-title">{{ $products->seo_title }}</h2>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('main') }}">Головна</a></li>
+                        <li class="active">{{ $products->title }}</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="project-post-area sectpad">
-        <div class="container clearfix">
-            <h2 style="margin-bottom: 50px;">Галерея продукції</h2>
-          <div class="project-post">
-            <div class="row">
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-            </div>
-          </div>
-          <div class="project-post">
-            <div class="row">
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-              <div class="col-sm-4 project-post-info">
-                <div class="img-holder"><a href="{{ $products->img ?? asset('images/no-image.jpg') }}" class="tt-gallery-1 lightbox"><span class="tt-gallery-1-overlay"></span>
-                    <div class="project-post-image image_hover"><img src="{{ $products->img ?? asset('images/no-image.jpg') }}" alt="Oil Plant Project" class="zoom_img_effect"><span class="tt-gallery-1-caption"><span class="tt-gallery-1-caption-table"><span class="tt-gallery-1-caption-inner"><span class="tt-gallery-1-search"><i class="fa fa-search"></i></span></span></span></span></div></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    <section class="section section-sm section-fluid bg-default">
-        <!-- Owl Carousel-->
-        <div class="owl-carousel owl-classic owl-timeline" data-items="1" data-md-items="2" data-lg-items="3"
-            data-xl-items="4" data-margin="30" data-autoplay="false" data-nav="true" data-dots="true">
-            @if (count($products->images) > 0)
-                @foreach ($products->images as $img)
-                    <div class="owl-item">
-                        <article class="thumbnail thumbnail-mary">
-                            <div class="thumbnail-mary-figure">
-                                <img src="/images/gallery/{{ $img->image }}" alt=""
-                                    style="with:420px; height: 308px;" srcset="">
+        </section>
+        <section class="section novi-background section-sm section-first">
+            <div class="container-fluid px-5">
+                <div class="row row-50">
+                    <div class="col-xl-8">
+                        <div class="my-3"></div>
+                        <div class="col-xl-6 col-12 offset-xl-3">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="{{ $products->img ?? asset('images/no-image.jpg') }}" class="img-thumbnail"
+                                                alt="{{ $products->title }}">
+                                        </div>
+                                        @if (count($products->images) > 0)
+                                        @foreach ($products->images as $img)
+                                        <div class="carousel-item">
+                                            <img src="/img/gallery/{{ $img->image }}" class="img-thumbnail" alt="Img №{{ $img->image }}">
+                                        </div>
+                                    @endforeach
+                                    @endif
+                                </div>
+                                @if ( !empty($img))
+                                <a class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+                                <span style="color: #000;font-size:40px;font-weight:bold;cursor: pointer;"><</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+                                    <span style="color: #000;font-size:40px;font-weight:bold;cursor: pointer;">></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                                @endif
                             </div>
-                            <div class="thumbnail-mary-caption"><a class="icon fl-bigmug-line-zoom60"
-                                    href="/images/gallery/{{ $img->image }}" alt="buy weapons" width="420"
-                                    height="308" /></a>
-                            </div>
-                        </article>
+                        </div>
+                        <div class="my-5">
+                            <hr>
+                        </div>
+                        <p></p>
+
                     </div>
-                @endforeach
-            @endif
-        </div>
-    </section>
+                    <div class="col-md-4">
+                        @include('app.includes.aside')
+                    </div>
+                </div>
+                <div class="row row-50">
+                <div class="col-md-5 offset-md-1 thumbnail px-3 border">
+                    <h4 class="text-center">Опис</h4>
+                    <p>{!! $products->content !!}</p>
+                      </div>
+                      <div class="col-md-5 thumbnail px-3 ml-3 border">
+                        {{-- <h4 class="text-center">Характеристики</h4> --}}
+                        <p>{!! $products->charact !!}</p>
+                      </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </div>
 @endsection

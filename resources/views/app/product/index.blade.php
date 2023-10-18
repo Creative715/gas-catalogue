@@ -1,42 +1,43 @@
-@extends('layouts.app', ['title' => 'Вся продукція', 'description' => 'Buy weapon in the Czech Republic'])
+@extends('layouts.app', ['title' => 'Каталог товарів', 'description' => 'Продукція ТОВ Immertrade, купити газові котли, теплові насоси, аксесуари до теплових насосів і газових котлів'])
 @section('content')
-    <section class="inner-banner2 clearfix">
-        <div class="container clearfix">
-          <h2>Вся продукція</h2>
-        </div>
-      </section>
-      <section class="breadcumb-wrapper">
-        <div class="container clearfix">
-          <ul class="breadcumb">
-            <li><a href="{{ route('main') }}">Головна</a></li>
-            <li><span>Вся продукція</span></li>
-          </ul>
-        </div>
-      </section>
-      <section class="core-projects sectpad">
-        <div class="container clearfix">
-          <h1>Вся продукція</h1>
-          <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
-        </div>
-      </section>
-      <section class="project-post-area sectpad">
-        <div class="container clearfix">
-            <div class="project-post">
-                <div class="row">
-                    @foreach ($products as $product)
-                  <div class="col-sm-4 project-post-info">
-                    <div class="project-post-image image_hover"><img src="{{ $product->img ?? asset('/images/no-image.jpg') }}" alt="{{ $product->title }}" class="zoom_img_effect img-thumbnail">
-                      <div class="info-text">
-                        <h4>{{ $product->title }}</h4><a href="{{ route('product.more', $product->slug) }}">Докладніше</a>
-                      </div>
+    <div class="page">
+        <section class="section novi-background breadcrumbs-custom bg-image context-dark"
+            style="background-image: url({{ asset('images/bg.jpg') }}">
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main">
+                        <h6 class="breadcrumbs-custom-subtitle title-decorated">Immertrade</h6>
+                        <h2 class="text-uppercase breadcrumbs-custom-title">Каталог товарів</h2>
                     </div>
-                  </div>
-                  @endforeach
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('main') }}">Головна</a></li>
+                        <li class="active">Каталог товарів</li>
+                    </ul>
                 </div>
-              </div>
-              <ul class="page-navigation text-left">
-                <li>{{ $products->links() }}</li>
-              </ul>
-        </div>
-      </section>
-@endsection
+            </div>
+        </section>
+        <section class="section novi-background section-md text-center">
+            <div class="container-fluid" style="padding: 0 280px;">
+                <h3 class="text-uppercase font-weight-bold wow-outer"><span class="wow slideInDown">Каталог товарів</span>
+                </h3>
+                <div class="row row-lg-50 row-35 offset-top-2">
+                    @foreach ($products as $product)
+                        <div class="col-md-4 wow-outer">
+                            <article class="post-modern wow slideInLeft">
+                                <a class="post-modern-media" href="{{ route('product.more', $product->slug) }}"><img
+                                        src="{{ $product->img ?? asset('/images/no-image.jpg') }}"
+                                        alt="{{ $product->title }}" width="571" height="353" /></a>
+                                <h4 class="post-modern-title"><a class="post-modern-title"
+                                        href="{{ route('product.more', $product->slug) }}">{{ $product->title }}</a></h4>
+                                <p>{{ $product->description }}</p>
+                            </article>
+                        </div>
+                    @endforeach
+                </div>
+                <ul class="my-5">
+                    <li>{{ $products->links() }}</li>
+                </ul>
+            </div>
+
+        </section>
+    @endsection

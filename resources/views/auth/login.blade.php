@@ -1,38 +1,51 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Вхід для клієнтів', 'description' => 'Вхід для клієнтів'])
 @section('content')
-    <section class="inner-banner2 clearfix">
-        <div class="container clearfix">
-            <h2>{{ __('Login') }}</h2>
-        </div>
-    </section>
-    <section class="breadcumb-wrapper">
-        <div class="container clearfix">
-            <ul class="breadcumb">
-                <li><a href="{{ route('main') }}">Головна</a></li>
-                <li><span>Login</span></li>
-            </ul>
-        </div>
-    </section>
-    <section class="core-projects touch">
-        <div class="sectpad touch_bg">
-            <div class="container clearfix">
-                <h2 class="text-center">{{ __('Sign In') }}</h2>
-                <div class="row touch_middle">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 input_form">
+    <div class="page">
+        <section class="section novi-background breadcrumbs-custom bg-image context-dark"
+            style="background-image: url({{ asset('images/bg.jpg') }}">
+            <div class="breadcrumbs-custom-inner">
+                <div class="container breadcrumbs-custom-container">
+                    <div class="breadcrumbs-custom-main">
+                        <h6 class="breadcrumbs-custom-subtitle title-decorated">Immertrade</h6>
+                        <h2 class="text-uppercase breadcrumbs-custom-title">{{ __('Вхід для клієнтів') }}</h2>
+                    </div>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="{{ route('main') }}">Головна</a></li>
+                        <li class="active">{{ __('Вхід для клієнтів') }}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+            <section class="section novi-background bg-gray-100 py-5">
+            <div class="container">
+                <div class="row row-50">
+                    <div class="col-xl-12">
+                        <div class="my-3">
+                            <h3 class="text-uppercase wow-outer"><span class="wow slideInDown"><hr></span></h3>
+                        </div>
+                        <div class="col-xl-6 col-12 offset-xl-3">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" placeholder="email" required autocomplete="email" autofocus>
+                            <div class="col-md-12 wow-outer my-4">
+                                <div class="form-wrap wow fadeSlideInUp">
+                                   <input id="email" type="email" class="form-input @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email" autofocus>
 
+                                </div>
+                              </div>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" placeholder="password"
-                            required autocomplete="current-password">
+                            <div class="col-md-12 wow-outer">
+                                <div class="form-wrap wow fadeSlideInUp">
+                                  <input id="password" type="password"
+                                  class="form-input @error('password') is-invalid @enderror" name="password" placeholder="Пароль"
+                                  required autocomplete="current-password">
+                                </div>
+                              </div>
+
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -44,28 +57,29 @@
                             {{ old('remember') ? 'checked' : '' }}>
 
                         <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
+                            {{ __("Запам'ятати мене") }}
                         </label>
                         </div>
-                                    <button type="submit" class="btn btn-default btn-block submit"> {{ __('Login') }} <i
-                                            class="fa fa-angle-double-right"></i></button>
+                            <div class="row ml-3">
+                            <div class="wow-outer col-md-5">
+                              <button class="button button-primary btn-block button-winona wow slideInRight" type="submit">{{ __('Увійти') }}</button>
+                            </div>
+                            <p>або</p>
+                            <div class="wow-outer col-md-6"><a class="button button-primary-outline button-icon button-icon-left button-winona wow slideInLeft" href="{{ route('register') }}">{{ __('Зареєструватися') }}</a></div>
+                        </div>
                                             <div class="row">
                                                 <div class="col-md-6" style="padding-top: 30px;text-align:left">
                                                     @if (Route::has('password.request'))
                                                     <a class="btn-link" href="{{ route('password.request') }}">
-                                                        {{ __('Forgot Your Password?') }}
+                                                        {{ __('Забули пароль?') }}
                                                     </a>
                                                 @endif
                                                 </div>
-                                                <div class="col-md-6" style="padding-top: 30px;text-align:right">
-                                                    <a class="btn-link" href="{{ route('register') }}">
-                                                        {{ __('Register') }}
-                                                    </a>
-                                                </div>
                                             </div>
 
+
                             </form>
-                        </div>
+                                                </div>
                     </div>
                 </div>
             </div>

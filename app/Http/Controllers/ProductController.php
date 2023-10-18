@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::AllPaginate(12);
-        $categories = Category::all();
+        $categories = Category::all()->whereNull('parent_id');
         return view('app.main', [
             'products' => $products,
             'categories' => $categories

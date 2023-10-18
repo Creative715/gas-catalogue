@@ -1,36 +1,21 @@
-@extends('layouts.app', ['title' => "Categories", 'description' => 'Buy weapon in the Chech Republic'])
+@extends('layouts.app', ['title' => 'Категорії товарів', 'description' => 'Категорії продукції, газові котли, теплові насоси, аксесуари до газових котлів і теплових насосів'])
 @section('content')
-    <section class="inner-banner2 clearfix">
-        <div class="container clearfix">
-          <h2>Categories</h2>
-        </div>
-      </section>
-      <section class="breadcumb-wrapper">
-        <div class="container clearfix">
-          <ul class="breadcumb">
-            <li><a href="{{ route('main') }}">Головна</a></li>
-            <li><a href="{{ route('categories') }}">Всі категорії</a></li>
-          </ul>
-        </div>
-      </section>
-      <section class="core-projects sectpad">
-        <div class="container clearfix">
-          <h1>Всі категорії</h1>
-        </div>
-      </section>
-      <section class="diff-offer-wrapper">
-        <div class="container">
-          <div class="row">
-            @foreach ($categories as $category)
-            <div class="col-sm-4 col-md-6 service-info">
-              <div class="item"><a href="agricultural.html" class="post-image view image_hover">			<img src="{{ $category->img ?? asset('/images/no-image.jpg') }}" alt="{{ $category->title }}" title="{{ $category->title }}" class="img-responsive zoom_img_effect"></a><a href="agricultural.html">
-                  <h4>{{ $category->title }}</h4></a>
-                <p>Neque porro quisquam est, qui dolorem ipsum quira dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi.</p>
-                <h6><a href="{{ route('category.more', $category->slug) }}">Докладніше</a></h6>
-              </div>
+<div class="page">
+    <section class="section novi-background breadcrumbs-custom bg-image context-dark"
+        style="background-image: url({{ asset('images/bg.jpg') }}">
+        <div class="breadcrumbs-custom-inner">
+            <div class="container breadcrumbs-custom-container">
+                <div class="breadcrumbs-custom-main">
+                    <h6 class="breadcrumbs-custom-subtitle title-decorated">Immertrade</h6>
+                    <h2 class="text-uppercase breadcrumbs-custom-title">Категорії товарів</h2>
+                </div>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="{{ route('main') }}">Головна</a></li>
+                    <li><a href="{{ route('categories') }}">Всі категорії</a></li>
+                    <li><span>Категорії товарів</span></li>
+                </ul>
             </div>
-            @endforeach
-          </div>
         </div>
-      </section>
+    </section>
+    Категорії товарів
 @endsection

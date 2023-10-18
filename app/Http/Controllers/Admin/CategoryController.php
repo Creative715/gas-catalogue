@@ -29,12 +29,16 @@ class CategoryController extends Controller
       */
       public function create()
       {
-        return view('admin.category.create');
+        $categories = Category::all();
+        return view('admin.category.create', [
+            'categories'=> $categories
+        ]);
       }
 
       public function store(Request $request)
       {
        $category = Category::create($request->all());
+       $category->parent_id = $request->input('parent_id');
          if ($request->file('img')) {
             $path = Storage::putFile('public', $request->file('img'));
             $url = Storage::url($path);
@@ -61,10 +65,13 @@ class CategoryController extends Controller
       * @param  \App\Models\Category $category
       * @return \Illuminate\Http\Response
       */
-     public function edit(Category $category)
+     public function edit($id)
      {
-         return view('admin.category.edit',[
-            'category' => $category
+        $category = Category::findOrFail($id);
+        $categories = Category::all();
+        return view('admin.category.edit',[
+            'category' => $category,
+            'categories' => $categories
          ]);
      }
 
